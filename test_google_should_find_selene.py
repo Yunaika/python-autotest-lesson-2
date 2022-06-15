@@ -1,16 +1,16 @@
 from selene import be, have
 from selene.support.shared import browser
 
-# ищем search_text в гугл и проверяем есть ли в результатах result_text
-def search_text_in_google(search_text: str, result_text: str):
-    browser.element('[name="q"]').should(be.blank).type(search_text).press_enter()
-    browser.element('[id="search"]').should(have.text(result_text))
+# ищем search_text в yandex и проверяем есть ли в результатах result_text
+def search_text_in_yandex(search_text: str, result_text: str):
+    browser.element('#text').should(be.blank).type(search_text).press_enter()
+    browser.element('#search-result').should(have.text(result_text))
 
-class TestGoogleSearch:
+class TestYandexSearch:
     # позитивный тест
-    def test_google_should_find_selene_positive(self):
-        search_text_in_google('selene', 'User-oriented Web UI browser tests in Python')
+    def test_yandex_should_find_selene_positive(self):
+        search_text_in_yandex('selene', 'User-oriented Web UI browser tests in Python')
 
     # негативный тест
-    def test_google_should_find_selene_negative(self):
-        search_text_in_google('selene', 'Selenium Webdriver Java')
+    def test_yandex_should_find_selene_negative(self):
+        search_text_in_yandex('selene', 'Selenium Webdriver Java')
